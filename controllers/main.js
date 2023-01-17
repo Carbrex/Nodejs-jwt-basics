@@ -5,6 +5,7 @@
 // setup authentication so only the request with JWT can access the dashboard
 
 const jwt = require("jsonwebtoken");
+const { BadRequestError } = require("../errors");
 const CustomAPIError = require("../errors/custom-error");
 
 const login = async (req, res) => {
@@ -14,7 +15,7 @@ const login = async (req, res) => {
     // joi
     // check in the controller
     if (!(username || password)) {
-        throw new CustomAPIError('Please provide email and password', 400);
+        throw new BadRequestError('Please provide email and password');
     }
     // just for demo normally provided by db
     const id = new Date().getDate();
