@@ -14,7 +14,7 @@ const login = async (req, res) => {
     // mongoose validation
     // joi
     // check in the controller
-    if (!(username || password)) {
+    if (!(username && password)) {
         throw new BadRequestError('Please provide email and password');
     }
     // just for demo normally provided by db
